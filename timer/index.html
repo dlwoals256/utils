@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이머</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-state="idle">
+    <div class="warning-overlay"></div>
+
+    <div class="app">
+        <div class="card">
+            <h1 class="app-title">타이머</h1>
+
+            <div class="timer-section">
+                <div class="time-setter">
+                    <div class="time-unit">
+                        <input type="number" class="time-input" id="inputHours"
+                            min="0" max="99" value="00" aria-label="시간">
+                        <span class="unit-label">시</span>
+                    </div>
+                    <span class="colon">:</span>
+                    <div class="time-unit">
+                        <input type="number" class="time-input" id="inputMinutes"
+                            min="0" max="59" value="00" aria-label="분">
+                        <span class="unit-label">분</span>
+                    </div>
+                    <span class="colon">:</span>
+                    <div class="time-unit">
+                        <input type="number" class="time-input" id="inputSeconds"
+                            min="0" max="59" value="00" aria-label="초">
+                        <span class="unit-label">초</span>
+                    </div>
+                </div>
+
+                <div class="countdown">
+                    <span id="countdownDisplay">00:00:00</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="status-text" id="statusText"></div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="startPauseBtn">시작</button>
+                <button class="btn btn-secondary hidden" id="resetBtn">초기화</button>
+            </div>
+
+            <div class="presets-section">
+                <div class="presets-header">
+                    <h2 class="presets-title">프리셋</h2>
+                    <button class="btn-add" id="addPresetBtn">+ 추가</button>
+                </div>
+                <div class="presets-list" id="presetsList">
+                    <p class="empty-presets" id="emptyPresets">프리셋이 없습니다. 추가해보세요!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modalOverlay">
+        <div class="modal">
+            <h3 class="modal-title">프리셋 추가</h3>
+            <div class="form-group">
+                <label class="form-label" for="presetNameInput">이름</label>
+                <input type="text" class="form-input" id="presetNameInput"
+                    placeholder="예: 포모도로" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label class="form-label">시간</label>
+                <div class="preset-time-row">
+                    <div class="preset-time-unit">
+                        <input type="number" class="form-time-input" id="presetHours" min="0" max="99" value="0">
+                        <span class="form-unit-label">시간</span>
+                    </div>
+                    <span class="form-colon">:</span>
+                    <div class="preset-time-unit">
+                        <input type="number" class="form-time-input" id="presetMinutes" min="0" max="59" value="0">
+                        <span class="form-unit-label">분</span>
+                    </div>
+                    <span class="form-colon">:</span>
+                    <div class="preset-time-unit">
+                        <input type="number" class="form-time-input" id="presetSeconds" min="0" max="59" value="0">
+                        <span class="form-unit-label">초</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="savePresetBtn">저장</button>
+                <button class="btn btn-ghost" id="cancelPresetBtn">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
