@@ -81,6 +81,7 @@ function startTimer() {
 
     totalSeconds = secs;
     remainingSeconds = secs;
+    endTime = Date.now() + secs * 1000;
     setState('running');
     renderCountdown();
     updateProgressBar();
@@ -93,6 +94,7 @@ function pauseTimer() {
 }
 
 function resumeTimer() {
+    endTime = Date.now() + remainingSeconds * 1000;
     setState('running');
     scheduleInterval();
 }
@@ -124,7 +126,7 @@ function finishTimer() {
 function scheduleInterval() {
     clearInterval(intervalId);
     intervalId = setInterval(() => {
-        remainingSeconds = Math.max(0, remainingSeconds - 1);
+        remainingSeconds = Math.max(0, Math.ceil(endTime - Date.now() / 1000));
         renderCountdown();
         updateProgressBar();
         updateWarning();
