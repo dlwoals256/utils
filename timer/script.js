@@ -4,6 +4,7 @@
 let timerState = 'idle'; // 'idle' | 'running' | 'paused' | 'finished'
 let totalSeconds = 0;
 let remainingSeconds = 0;
+let endTime = 0;
 let intervalId = null;
 let presets = [];
 
